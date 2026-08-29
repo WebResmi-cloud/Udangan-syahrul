@@ -33,7 +33,8 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             overflow-x: hidden !important;
             width: 100%;
             max-width: 100vw;
@@ -403,13 +404,15 @@
 
         .story-photo-large {
             width: 100%;
+            /* Lebar gambar mengikuti kontainer */
             height: auto;
-            max-height: 380px;
-            object-fit: cover;
-            border-radius: 16px;
-            border: 2px solid var(--gold);
-            margin-bottom: 18px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            /* Tinggi menyesuaikan rasio asli foto agar tidak terpotong */
+            object-fit: contain;
+            /* Memastikan seluruh area foto tampil utuh */
+            display: block;
+            /* Mencegah spasi kosong di bawah gambar */
+            border-radius: 8px;
+            /* Opsional: Sudut melengkung agar lebih rapi */
         }
 
         .story-title {
@@ -739,9 +742,9 @@
         /* Footer */
         footer {
             position: relative;
-            padding: 60px 20px;
-            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1500&q=80') center/cover;
-            color: #ddd;
+            padding: 10px 10px;
+            background: rgb(0, 0, 0);
+            color: #000000;
             text-align: center;
             font-size: 0.95rem;
             width: 100%;
@@ -751,7 +754,7 @@
         }
 
         footer p {
-            color: #ccc;
+            color: #000000;
         }
     </style>
 </head>
@@ -787,17 +790,20 @@
             </div>
             <div class="hero-bg-slide" style="background-image: url('img/foto3.jfif');">
             </div>
-       
 
-        <div class="hero-overlay"></div>
 
-        <div class="hero-content reveal-up">
-            <p style="font-style: italic; color: var(--gold); font-size: 1.2rem;">Assalamu’alaikum Warahmatullahi
-                Wabarakatuh</p>
-            <div class="divider" style="background: var(--gold); width: 40px; margin: 15px auto;"></div>
-            <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 15px;">Tanpa mengurangi rasa hormat, kami
-                mengundang Bapak/Ibu/Saudara/i sekalian untuk menghadiri acara pernikahan kami.</p>
-        </div>
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content reveal-up" style="margin-top: 60vh;">
+                <p style="font-style: italic; color: var(--gold); font-size: 1.2rem;">
+                    Assalamu’alaikum Warahmatullahi Wabarakatuh
+                </p>
+                <div class="divider" style="background: var(--gold); width: 40px; margin: 15px auto;"></div>
+                <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 5px; color: white;">
+                    Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i sekalian untuk menghadiri acara
+                    pernikahan kami.
+                </p>
+            </div>
         </section>
 
         <section class="section" style="padding-top: 40px; padding-bottom: 40px;">
@@ -819,7 +825,7 @@
         <div style="text-align: center; padding: 40px 20px 20px 20px;" class="reveal-up">
 
             <div style="max-width: 400px; margin: 0 auto 25px auto;">
-                <img src="img/prewed.png" alt="Foto Pasangan"
+                <img src="img/prewed.jfif" alt="Foto Pasangan"
                     style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); display: block;">
             </div>
 
@@ -858,7 +864,7 @@
                         <img src="img/syahrul.jpeg">
                     </div>
                     <div class="couple-nickname">Syahrul</div>
-                    <div class="couple-fullname">Muhammad Syahrul, S.Kom</div>
+                    <div class="couple-fullname">Muhammad Syahrul</div>
                     <div class="couple-parents">Putra Pertama dari Bapak Muhammad dan Ibu Suryati</div>
                     <a href="https://instagram.com" target="_blank" class="btn-instagram">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -939,7 +945,8 @@
                             Minggu, 04 Oktober 2026</p>
                         <p style="color: #ddd; font-size: 0.95rem; margin-bottom: 5px;">Pukul 09.00 WIB - Selesai</p>
                         <p style="color: #ddd; font-size: 0.95rem; margin-bottom: 12px;">Di Kediaman Mempelai Wanita</p>
-                        <a href="https://maps.app.goo.gl/KJ6gpPGfNqiAvCzcA" target="_blank" class="btn-map">Lihat Google Maps</a>
+                        <a href="https://maps.app.goo.gl/KJ6gpPGfNqiAvCzcA" target="_blank" class="btn-map">Lihat Google
+                            Maps</a>
                     </div>
 
                     <div style="padding: 20px; background: rgba(0,0,0,0.5); border: 1px solid rgba(197,160,89,0.4); border-radius: 20px;"
@@ -951,7 +958,8 @@
                             Minggu, 04 Oktober 2026</p>
                         <p style="color: #ddd; font-size: 0.95rem; margin-bottom: 5px;">Pukul 10.00 WIB - Selesai</p>
                         <p style="color: #ddd; font-size: 0.95rem; margin-bottom: 12px;">Di Kediaman Mempelai Wanita</p>
-                        <a href="https://maps.app.goo.gl/KJ6gpPGfNqiAvCzcA" target="_blank" class="btn-map">Lihat Google Maps</a>
+                        <a href="https://maps.app.goo.gl/KJ6gpPGfNqiAvCzcA" target="_blank" class="btn-map">Lihat Google
+                            Maps</a>
                     </div>
                 </div>
             </div>
@@ -966,8 +974,7 @@
 
             <div class="story-container">
                 <div class="story-item reveal-left">
-                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80"
-                        alt="Pertama Kali Bertemu" class="story-photo-large">
+                    <img src="img/pertemuan.jfif" alt="Pertama Kali Bertemu" class="story-photo-large">
                     <span class="story-date-badge">Januari 2023</span>
                     <h3 class="story-title">Awal Pertemuan</h3>
                     <p class="story-desc">Takdir mempertemukan kami melalui sebuah proyek pekerjaan di Tangerang.
@@ -976,8 +983,7 @@
                 </div>
 
                 <div class="story-item reveal-right">
-                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1000&q=80"
-                        alt="Momen Lamaran" class="story-photo-large">
+                    <img src="img/lamaran.png" alt="Momen Lamaran" class="story-photo-large">
                     <span class="story-date-badge">Oktober 2025</span>
                     <h3 class="story-title">Komitmen Bersama</h3>
                     <p class="story-desc">Setelah melewati berbagai suka dan duka bersama selama beberapa tahun, kami
@@ -988,7 +994,7 @@
         </section>
 
         <section class="section-hero"
-            style="position: relative; min-height: auto; padding: 60px 20px; background-image: url('img/foto1.jfif'); background-size: cover; background-position: center;">
+            style="position: relative; min-height: auto; padding: 60px 20px; background-image: url('../img/foto2.jfif'); background-size: cover; background-position: center;">
 
             <div class="reveal-up">
                 <h2 style="color: #ffffff;">Konfirmasi Kehadiran</h2>
@@ -1024,7 +1030,8 @@
             <section class="section">
                 <div class="reveal-up">
                     <h2 style="color: #ffffff;">Kirim Hadiah</h2>
-                    <p style="color: #ffffff;">Doa restu Anda merupakan karunia terindah bagi kami. Namun jika Anda ingin
+                    <p style="color: #ffffff;">Doa restu Anda merupakan karunia terindah bagi kami. Namun jika Anda
+                        ingin
                         mengirimkan tanda kasih, silakan melalui rekening di bawah ini:</p>
                 </div>
 
@@ -1043,8 +1050,8 @@
                         </div>
                         <div class="atm-body">
                             <div class="atm-info">
-                                <div class="atm-holder-name gold-text">Muhammad Syahrul</div>
-                                <div class="atm-number" id="rek-bni">1943252993</div>
+                                <div class="atm-holder-name">Muhammad Syahrul</div>
+                                <div class="atm-number" id="rek-bni">1234567890</div>
                             </div>
                             <button class="btn-copy-atm" onclick="copyText('rek-bni', this)">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1065,7 +1072,7 @@
                         <div class="atm-body">
                             <div class="atm-info">
                                 <div class="atm-holder-name">Muhammad Syahrul</div>
-                                <div class="atm-number" id="rek-bri">041701047487505</div>
+                                <div class="atm-number" id="rek-bri">123401056789508</div>
                             </div>
                             <button class="btn-copy-atm" onclick="copyText('rek-bri', this)">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1097,20 +1104,22 @@
                                 </svg>
                                 <span>Salin</span>
                             </button>
-
                         </div>
-                    </div>
+                    </div><br><br>
+                    <p
+                        style="color: white; font-family: var(--font-heading); font-size: clamp(1.6rem, 5vw, 2.2rem); margin-bottom: 10px; letter-spacing: 2px;">
+                        Syahrul & Nadilah</p>
+                    <p style="max-width: 500px; margin: 0 auto 15px auto; color: #ffffff;">Merupakan suatu kehormatan
+                        dan kebahagiaan
+                        bagi kami
+                        apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+                    <div class="divider" style="background: var(--gold); width: 40px; margin: 15px auto;"></div>
                 </div>
             </section>
         </section>
-         
+
         <footer class="reveal-up">
-            <p
-                style="font-family: var(--font-heading); font-size: clamp(1.6rem, 5vw, 2.2rem); color: var(--gold); margin-bottom: 10px; letter-spacing: 2px;">
-                Syahrul & Nadilah</p>
-            <p style="max-width: 500px; margin: 0 auto 15px auto;">Merupakan suatu kehormatan dan kebahagiaan bagi kami
-                apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
-            <div class="divider" style="background: var(--gold); width: 40px; margin: 15px auto;"></div>
+
             <p
                 style="margin-top: 15px; font-size: 0.8rem; color: #aaa; font-family: var(--font-heading); letter-spacing: 1px;">
                 © 2026 Syahrul & Nadilah Wedding. All Rights Reserved.</p>
@@ -1124,63 +1133,63 @@
         let isPlaying = false;
 
         function openInvitation() {
-    // 1. Efek Membuka Cover
-    const cover = document.getElementById('cover');
-    if (cover) {
-        cover.style.transform = 'translateY(-100%)';
-    }
-
-    // 2. Kontrol Audio & Musik
-    if (typeof audioControl !== 'undefined' && audioControl) {
-        audioControl.style.display = 'flex';
-    }
-
-    if (typeof music !== 'undefined' && music) {
-        const playPromise = music.play();
-
-        if (playPromise !== undefined) {
-            playPromise.then(() => {
-                if (typeof isPlaying !== 'undefined') isPlaying = true;
-                if (typeof audioControl !== 'undefined' && audioControl) audioControl.innerHTML = '🔊';
-            }).catch(error => {
-                console.warn("Autoplay terhalang atau file audio tidak ditemukan:", error);
-                if (typeof isPlaying !== 'undefined') isPlaying = false;
-                if (typeof audioControl !== 'undefined' && audioControl) audioControl.innerHTML = '🔇';
-            });
-        }
-    }
-    
-        // 3. Observer Latar/Animasi
-        if (typeof initObserver === 'function') {
-            initObserver();
-        }
-    
-        // 4. Jalankan Auto Scroll Pelan
-        startAutoScroll();
-    }
-    
-    // Fungsi Auto Scroll yang Ditingkatkan (Aman & Super Smooth)
-    function startAutoScroll() {
-        const speed = 0.6; // Kecepatan lambat (ubah ke 0.4 jika ingin lebih pelan lagi)
-        let scrollAcc = 0;
-    
-        function step() {
-            if ((window.innerHeight + window.scrollY) < document.documentElement.scrollHeight) {
-                scrollAcc += speed;
-                if (scrollAcc >= 1) {
-                    const move = Math.floor(scrollAcc);
-                    window.scrollBy(0, move);
-                    scrollAcc -= move;
-                }
-                requestAnimationFrame(step);
+            // 1. Efek Membuka Cover
+            const cover = document.getElementById('cover');
+            if (cover) {
+                cover.style.transform = 'translateY(-100%)';
             }
+
+            // 2. Kontrol Audio & Musik
+            if (typeof audioControl !== 'undefined' && audioControl) {
+                audioControl.style.display = 'flex';
+            }
+
+            if (typeof music !== 'undefined' && music) {
+                const playPromise = music.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        if (typeof isPlaying !== 'undefined') isPlaying = true;
+                        if (typeof audioControl !== 'undefined' && audioControl) audioControl.innerHTML = '🔊';
+                    }).catch(error => {
+                        console.warn("Autoplay terhalang atau file audio tidak ditemukan:", error);
+                        if (typeof isPlaying !== 'undefined') isPlaying = false;
+                        if (typeof audioControl !== 'undefined' && audioControl) audioControl.innerHTML = '🔇';
+                    });
+                }
+            }
+
+            // 3. Observer Latar/Animasi
+            if (typeof initObserver === 'function') {
+                initObserver();
+            }
+
+            // 4. Jalankan Auto Scroll Pelan
+            startAutoScroll();
         }
 
-    // Jeda 800ms agar animasi sliding cover selesai dulu
-    setTimeout(() => {
-        requestAnimationFrame(step);
-    }, 800);
-}
+        // Fungsi Auto Scroll yang Ditingkatkan (Aman & Super Smooth)
+        function startAutoScroll() {
+            const speed = 0.6; // Kecepatan lambat (ubah ke 0.4 jika ingin lebih pelan lagi)
+            let scrollAcc = 0;
+
+            function step() {
+                if ((window.innerHeight + window.scrollY) < document.documentElement.scrollHeight) {
+                    scrollAcc += speed;
+                    if (scrollAcc >= 1) {
+                        const move = Math.floor(scrollAcc);
+                        window.scrollBy(0, move);
+                        scrollAcc -= move;
+                    }
+                    requestAnimationFrame(step);
+                }
+            }
+
+            // Jeda 800ms agar animasi sliding cover selesai dulu
+            setTimeout(() => {
+                requestAnimationFrame(step);
+            }, 800);
+        }
 
         function toggleMusic() {
             if (!music) return;
@@ -1279,6 +1288,7 @@
                 alert('Gagal menyalin teks.');
             });
         }
+
     </script>
 </body>
 
