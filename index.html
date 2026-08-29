@@ -1124,28 +1124,63 @@
         let isPlaying = false;
 
         function openInvitation() {
-            document.getElementById('cover').style.transform = 'translateY(-100%)';
-            audioControl.style.display = 'flex';
+    // 1. Efek Membuka Cover
+    const cover = document.getElementById('cover');
+    if (cover) {
+        cover.style.transform = 'translateY(-100%)';
+    }
 
-            if (music) {
-                const playPromise = music.play();
+    // 2. Kontrol Audio & Musik
+    if (typeof audioControl !== 'undefined' && audioControl) {
+        audioControl.style.display = 'flex';
+    }
 
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        isPlaying = true;
-                        audioControl.innerHTML = '🔊';
-                    }).catch(error => {
-                        console.warn("Autoplay terhalang atau file audio tidak ditemukan:", error);
-                        isPlaying = false;
-                        audioControl.innerHTML = '🔇';
-                    });
+    if (typeof music !== 'undefined' && music) {
+        const playPromise = music.play();
+
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                if (typeof isPlaying !== 'undefined') isPlaying = true;
+                if (typeof audioControl !== 'undefined' && audioControl) audioControl.innerHTML = '🔊';
+            }).catch(error => {
+                console.warn("Autoplay terhalang atau file audio tidak ditemukan:", error);
+                if (typeof isPlaying !== 'undefined') isPlaying = false;
+                if (typeof audioControl !== 'undefined' && audioControl) audioControl.innerHTML = '🔇';
+            });
+        }
+    }
+    
+        // 3. Observer Latar/Animasi
+        if (typeof initObserver === 'function') {
+            initObserver();
+        }
+    
+        // 4. Jalankan Auto Scroll Pelan
+        startAutoScroll();
+    }
+    
+    // Fungsi Auto Scroll yang Ditingkatkan (Aman & Super Smooth)
+    function startAutoScroll() {
+        const speed = 0.6; // Kecepatan lambat (ubah ke 0.4 jika ingin lebih pelan lagi)
+        let scrollAcc = 0;
+    
+        function step() {
+            if ((window.innerHeight + window.scrollY) < document.documentElement.scrollHeight) {
+                scrollAcc += speed;
+                if (scrollAcc >= 1) {
+                    const move = Math.floor(scrollAcc);
+                    window.scrollBy(0, move);
+                    scrollAcc -= move;
                 }
-            }
-
-            if (typeof initObserver === 'function') {
-                initObserver();
+                requestAnimationFrame(step);
             }
         }
+
+    // Jeda 800ms agar animasi sliding cover selesai dulu
+    setTimeout(() => {
+        requestAnimationFrame(step);
+    }, 800);
+}
 
         function toggleMusic() {
             if (!music) return;
