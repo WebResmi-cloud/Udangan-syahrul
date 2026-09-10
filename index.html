@@ -931,10 +931,10 @@
                     </div>
 
                     <div style="margin-bottom: 35px;">
-                        <a href="#" class="btn-calendar"
-                            style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background-color: #1e4d0f; color: #fff; border: 1px solid #ffffff; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 500;">
+                       <button type="button" onclick="addToCalendar()" class="btn-calendar"
+                            style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background-color: #1e4d0f; color: #fff; border: 1px solid #ffffff; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease;">
                             📅 Save The Date
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -1170,6 +1170,57 @@
 
             // 4. Jalankan Auto Scroll Pelan
             startAutoScroll();
+        }
+
+        function addToCalendar() {
+            // 1. Cek apakah pengguna membuka dari perangkat Android / PC atau Apple (iOS / macOS)
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        
+            // 2. Data Acara
+            const title = "The Wedding of Syahrul & Nadilah";
+            const details = "Acara Pernikahan Syahrul & Nadilah. Kami mengharapkan kehadiran dan doa restu Anda.";
+            const location = "Kediaman Mempelai Wanita";
+            
+            // Waktu Acara: Minggu, 04 Oktober 2026, 09.00 - 13.00 WIB
+            // Format UTC: 2026-10-04 09:00:00 WIB (UTC+7) => 20261004T020000Z
+            const startDateISO = "20261004T020000Z";
+            const endDateISO = "20261004T060000Z";
+        
+            if (isIOS) {
+                // Jika dari iPhone / iPad / Mac -> Download file .ics (Langsung otomatis membuka App Calendar iOS)
+                const icsContent = 
+        `BEGIN:VCALENDAR
+        VERSION:2.0
+        PRODID:-//Syahrul & Nadilah Wedding//ID
+        CALSCALE:GREGORIAN
+        METHOD:PUBLISH
+        BEGIN:VEVENT
+        SUMMARY:${title}
+        DESCRIPTION:${details}
+        LOCATION:${location}
+        DTSTART:${startDateISO}
+        DTEND:${endDateISO}
+        STATUS:CONFIRMED
+        END:VEVENT
+        END:VCALENDAR`;
+        
+                const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.setAttribute('download', 'Wedding-Syahrul-Nadilah.ics');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                // Jika dari Android / Windows / Browser Lain -> Buka Google Calendar secara langsung
+                const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE` +
+                    `&text=${encodeURIComponent(title)}` +
+                    `&dates=${startDateISO}/${endDateISO}` +
+                    `&details=${encodeURIComponent(details)}` +
+                    `&location=${encodeURIComponent(location)}`;
+                
+                window.open(googleCalendarUrl, '_blank');
+            }
         }
 
         // Fungsi Auto Scroll yang Ditingkatkan (Aman & Super Smooth)
