@@ -769,7 +769,11 @@
         <h1 class="cover-title">Syahrul & Nadilah</h1>
         <div class="cover-date-text">Minggu, 04 Oktober 2026</div>
 
-        <div class="cover-to">Kpd Bpk/Ibu/Saudara/i</div>
+       <div class="cover-to">Kpd Bpk/Ibu/Saudara/i</div>
+        <!-- Tambahkan elemen di bawah ini untuk menampilkan nama tamu -->
+        <h3 id="guest-name" style="font-size: 1.3rem; font-weight: 600; color: #ffffff; margin-bottom: 20px; font-family: var(--font-sans);">
+            Tamu Undangan
+        </h3>
 
         <button class="btn-open-new" onclick="openInvitation()">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1237,6 +1241,27 @@
             const elements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-scale');
             elements.forEach(element => observer.observe(element));
         }
+
+        // --- SCRIPT BACA NAMA TAMU DARI URL ---
+        window.addEventListener('DOMContentLoaded', () => {
+            // Membaca parameter URL (contoh: ?to=Budi+Santoso atau ?nama=Budi)
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestParam = urlParams.get('to') || urlParams.get('nama');
+        
+            if (guestParam) {
+                // Tampilkan nama tamu pada Cover Undangan
+                const guestElement = document.getElementById('guest-name');
+                if (guestElement) {
+                    guestElement.innerText = guestParam;
+                }
+        
+                // Isikan nama tamu secara otomatis ke Form RSVP/Konfirmasi
+                const inputNama = document.getElementById('nama');
+                if (inputNama) {
+                    inputNama.value = guestParam;
+                }
+            }
+        });
 
         const weddingDate = new Date("Oct 04, 2026 09:00:00").getTime();
         const timer = setInterval(() => {
